@@ -35,26 +35,22 @@ class GFG
 class Solution{
     ArrayList<Integer> subsetSums(ArrayList<Integer> nums, int N){
         // code here
-        ArrayList<Integer> curr = new ArrayList<>();
+        // ArrayList<Integer> curr = new ArrayList<>();
 		ArrayList<Integer> ans = new ArrayList<>();
-		printSS( 0, curr,nums,nums.size(), ans);
+		printSS( 0, 0,nums,nums.size(), ans);
 		Collections.sort(ans);
         return ans;
     }
-    public static void printSS(int index, List<Integer> list, ArrayList<Integer> arr, int n,
+    public static void printSS(int index, int sum, ArrayList<Integer> arr, int n,
             List<Integer> ans) {
         if (index == n) {
-            int sum=0;
-            for(int i:list){
-                sum+=i;
-            }
             ans.add(sum);
             return;
         }
-        list.add(arr.get(index));
-        printSS(index + 1, list, arr, n, ans);
-        list.remove(list.size() - 1);
-        printSS(index + 1, list, arr, n, ans);
+        // list.add(arr.get(index));
+        printSS(index + 1, sum+arr.get(index), arr, n, ans);
+        // list.remove(list.size() - 1);
+        printSS(index + 1, sum, arr, n, ans);
     }
 }
     
